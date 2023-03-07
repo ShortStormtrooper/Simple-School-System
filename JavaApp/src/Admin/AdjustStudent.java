@@ -320,7 +320,6 @@ public class AdjustStudent extends javax.swing.JFrame {
         }
         if (!newYear.equals("1") && !newYear.equals("2") && !newYear.equals("3")) {
             found = true;
-            System.out.println(year);
             errTextYear.setText("Year must be 1, 2 or 3!");
         }
 
@@ -443,17 +442,12 @@ public class AdjustStudent extends javax.swing.JFrame {
                         counterObligations++;
                     }
                 }
-
-                for (int i = 0; i < finalGradeCounter; i += 3) {
-                    System.out.println(finalGrade[i] + " - " + finalGrade[i + 1] + " - " + finalGrade[i + 2]);
-                }
-
+                
                 for (int i = 0; i < finalGradeCounter; i += 3) {
                     if (finalGrade[i + 1] != null) {
 
                     }
                     if (finalGrade[i + 1].equals(newYearStudentID)) {
-                        System.out.println("32546374869");
                         finalGrade[finalGradeCounter] = finalGrade[i];
                         finalGradeCounter++;
                         finalGrade[finalGradeCounter] = newId;

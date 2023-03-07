@@ -30,25 +30,20 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.Graphics;
-import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.Files;
 import java.sql.Blob;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.sql.rowset.serial.SerialBlob;
 import javax.swing.DefaultListModel;
-import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
@@ -206,16 +201,13 @@ public class MainFrame extends javax.swing.JFrame {
 
                 for (int k = 0; k < gradeTypeCounter; k++) {
                     typeFinalGrade += part * arrayPrecentage[k] / 100;
-                    System.out.println("type: " + typeFinalGrade + ", part: " + part + ", precentage: " + arrayPrecentage[k] / 100);
                 }
             }
 
             for (int j = 1; j < finalGradeCounter; j += 3) {
 
                 if (finalGrade[j].equals(Student[i].getName())) {
-                    System.out.println(finalGrade[j] + " +++ " + Student[i].getName());
                     if (typeFinalGrade <= 50) {
-                        System.out.println("Garde: dwefrgthfjhk");
                         finalGrade[j + 1] = "0";
                     } else if (typeFinalGrade > 50 && typeFinalGrade <= 60) {
                         finalGrade[j + 1] = "6";
@@ -267,7 +259,6 @@ public class MainFrame extends javax.swing.JFrame {
 
         String name = studentList2.getSelectedValue();
         String[] finalName = name.split("  -  ");
-        // index radi System.out.println(index);
         Obligations[] temp = new Obligations[1000];
         String[] temp2 = new String[1000];
 
@@ -355,7 +346,6 @@ public class MainFrame extends javax.swing.JFrame {
         String[][] readTableData = new String[1000][5];
 
         for (int i = 0; i < counterObligations; i++) {
-            System.out.println(arrayObligations[i].getObligationName() + " --- " + arrayObligations[i].getObligationType());
             if (arrayObligations[i].getObligationName().equals(finalSelect[1]) && arrayObligations[i].getObligationType().equals(finalSelect[0])) {
                 readTableData[counter][0] = arrayObligations[i].getStudentName();
                 readTableData[counter][1] = String.valueOf(arrayObligations[i].getMaximumPoints());
@@ -393,7 +383,6 @@ public class MainFrame extends javax.swing.JFrame {
         calculateGrade();
 
         String selected = studentList2.getSelectedValue();
-        System.out.println(selected);
         jPanel3.setVisible(true);
 
         for (int i = 0; i < counterSubjects; i++) {
@@ -464,11 +453,6 @@ public class MainFrame extends javax.swing.JFrame {
         conn = DriverManager.getConnection("jdbc:mysql://localhost/javaproject", "root", "");
         stm = conn.createStatement();
 
-        int studyYear = 0;
-
-        String obligationName;
-        String obligationType;
-        String finalObligation;
 
         sql = "DELETE FROM obligation_student WHERE SUBJECT_ID = '" + subject_ID_professor + "'";
         stm.executeUpdate(sql);
@@ -479,7 +463,6 @@ public class MainFrame extends javax.swing.JFrame {
         }
 
         sql = "DELETE FROM student_final_grade WHERE SUBJECT_ID = '" + subject_ID_professor + "'";
-        System.out.println(sql);
         stm.executeUpdate(sql);
 
         if (finalGradeCounter == 0) {
@@ -488,7 +471,6 @@ public class MainFrame extends javax.swing.JFrame {
 
         for (int i = 0; i < finalGradeCounter; i += 3) {
             sql = "INSERT INTO `student_final_grade`(`SUBJECT_ID`, `STUDENT_ID`, `FINAL_GRADE`) VALUES ('" + subject_ID_professor + "','" + finalGrade[i] + "','" + finalGrade[i + 2] + "')";
-            System.out.println(sql);
             stm.executeUpdate(sql);
         }
 
@@ -946,12 +928,6 @@ public class MainFrame extends javax.swing.JFrame {
         } else {
             writeTableProfessor(selected);
         }
-
-        /*
-        jTable1.setColumnWidth(0, 150);
-        jTable1.setColumnWidth(1, 150);
-        jTable1.setColumnWidth(5, 50);
-         */
     }//GEN-LAST:event_studentList2MouseClicked
 
     private void profilePicture2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_profilePicture2MouseClicked

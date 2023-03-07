@@ -31,12 +31,10 @@ import java.sql.Blob;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.sql.rowset.serial.SerialBlob;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
@@ -686,7 +684,6 @@ public class AdminFrame extends javax.swing.JFrame {
         String year = jTable3.getModel().getValueAt(row, 3).toString();
         String password = jTable3.getModel().getValueAt(row, 4).toString();
 
-        System.out.println(id + " " + name + " " + username + " " + year + " " + password);
         int index = 0;
         int counter = 0;
         String[] temp = new String[1000];
@@ -978,12 +975,6 @@ public class AdminFrame extends javax.swing.JFrame {
             stm = conn.createStatement();
             PreparedStatement stmt;
 
-            int studyYear = 0;
-
-            String obligationName;
-            String obligationType;
-            String finalObligation;
-
             sql = "DELETE FROM obligation_student";
             stm.executeUpdate(sql);
 
@@ -1005,7 +996,6 @@ public class AdminFrame extends javax.swing.JFrame {
             for (int i = 0; i < counterProfessorAdmin; i++) {
                 Blob blob = new SerialBlob(professorAdmin[i].getPicture());
                 sql = "INSERT INTO `professor`(`ID`, `FULL_NAME`, `USERNAME`, `PASSWORD`, `PICTURE`) VALUES ('" + professorAdmin[i].getID() + "','" + professorAdmin[i].getName() + "','" + professorAdmin[i].getUsername() + "','" + professorAdmin[i].getPassword() + "', ?)";
-                System.out.println(sql);
                 stmt = conn.prepareStatement(sql);
                 stmt.setBlob(1, blob);
                 stmt.execute();
@@ -1032,11 +1022,9 @@ public class AdminFrame extends javax.swing.JFrame {
             for (int i = 0; i < counterSubjects; i++) {
                 if (arraySubjects[i].getProfessorID().equals("")) {
                     sql = "INSERT INTO `subject`(`ID`, `SUBJECT_NAME`, `YEAR`, `SEMESTER`, `ECTS_POINTS`) VALUES ('" + arraySubjects[i].getId() + "','" + arraySubjects[i].getName() + "','" + arraySubjects[i].getYear() + "','" + arraySubjects[i].getSemester() + "'," + arraySubjects[i].getEctsPoints() + ")";
-                    System.out.println(sql);
                     stm.executeUpdate(sql);
                 } else {
                     sql = "INSERT INTO `subject`(`ID`, `SUBJECT_NAME`, `PROFESSOR_ID`, `YEAR`, `SEMESTER`, `ECTS_POINTS`) VALUES ('" + arraySubjects[i].getId() + "','" + arraySubjects[i].getName() + "','" + arraySubjects[i].getProfessorID() + "','" + arraySubjects[i].getYear() + "','" + arraySubjects[i].getSemester() + "'," + arraySubjects[i].getEctsPoints() + ")";
-                    System.out.println(sql);
                     stm.executeUpdate(sql);
                 }
 

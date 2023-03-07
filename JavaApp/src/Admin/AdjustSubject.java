@@ -7,20 +7,15 @@ package Admin;
 
 import static Admin.AdminFrame.WriteSubjects;
 import static Admin.AdminFrame.returnCounterObligations;
-import static JavaApp.LogInFrame.Student;
 import static JavaApp.LogInFrame.arrayObligations;
 import static JavaApp.LogInFrame.arraySubjects;
 import static JavaApp.LogInFrame.counterObligations;
 import static JavaApp.LogInFrame.counterProfessorAdmin;
-import static JavaApp.LogInFrame.counterStudent;
-import static JavaApp.LogInFrame.counterSubjectObligations;
 import static JavaApp.LogInFrame.counterSubjects;
 import static JavaApp.LogInFrame.finalGrade;
 import static JavaApp.LogInFrame.finalGradeCounter;
 import static JavaApp.LogInFrame.professorAdmin;
-import static JavaApp.LogInFrame.subjectObligations;
 import java.awt.Color;
-import java.util.Arrays;
 
 /**
  *

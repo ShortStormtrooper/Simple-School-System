@@ -9,8 +9,6 @@ import static JavaApp.LogInFrame.arrayObligationType;
 import static JavaApp.LogInFrame.arrayObligations;
 import static JavaApp.LogInFrame.counterObligationType;
 import static JavaApp.LogInFrame.counterObligations;
-import static JavaApp.LogInFrame.finalGrade;
-import static JavaApp.LogInFrame.finalGradeCounter;
 import static JavaApp.MainFrame.writeList;
 import java.awt.Color;
 

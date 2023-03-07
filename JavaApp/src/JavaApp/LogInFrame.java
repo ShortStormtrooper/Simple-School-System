@@ -7,25 +7,15 @@ package JavaApp;
 
 import Admin.Professor;
 import Admin.AdminFrame;
-import static JavaApp.MainFrame.profilePicture1;
 import java.awt.Color;
-import java.awt.Image;
-import java.awt.image.BufferedImage;
-import java.io.ByteArrayInputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.sql.Blob;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
-import javax.swing.JTextField;
 
 /**
  *
@@ -91,8 +81,6 @@ public class LogInFrame extends javax.swing.JFrame {
 
             sql = "SELECT * FROM " + type;
             rst = stm.executeQuery(sql);
-            System.out.println(sql);
-
             while (rst.next()) {
 
                 String username = rst.getString("USERNAME");
@@ -104,7 +92,6 @@ public class LogInFrame extends javax.swing.JFrame {
 
                     if (type.equals("student")) {
 
-                        int year = rst.getInt("STUDY_YEAR");
                         CURRENT_USER_ID = rst.getString("ID");
 
                         GetData(arraySubjects, arrayObligations);
@@ -139,14 +126,9 @@ public class LogInFrame extends javax.swing.JFrame {
         } else {
 
             if (log_in_username.equals("admin") && log_in_pass.equals("admin")) {
-                System.out.println("adefrgshgdj");
                 CURRENT_USER_ID = "ADMIN";
 
-                //pnlSearch.setVisible(true);
-                //LogOutBtn.setVisible(true);
-                //LogInText.setVisible(false);
                 getDataAdmin();
-                //getAdmin();
 
                 found = true;
 
@@ -290,7 +272,6 @@ public class LogInFrame extends javax.swing.JFrame {
     }
 
     public void GetData(Subjects[] subjectsArray, Obligations[] obligationsArray) throws SQLException, IOException {
-        System.out.println("STUDENTTTTTT");
         conn = DriverManager.getConnection("jdbc:mysql://localhost/javaproject", "root", "");
         stm = conn.createStatement();
 
@@ -359,7 +340,6 @@ public class LogInFrame extends javax.swing.JFrame {
         }
 
         sql = "SELECT * FROM obligation_student INNER JOIN subject ON obligation_student.SUBJECT_ID = subject.ID WHERE STUDENT_ID = '" + CURRENT_USER_ID + "'";
-        System.out.println(sql);
         rst = stm.executeQuery(sql);
         while (rst.next()) {
             obligationsArray[counterObligations] = new Obligations();
@@ -377,7 +357,6 @@ public class LogInFrame extends javax.swing.JFrame {
     }
 
     public void GetDataOfStudent(String[] arrayObligationType, Obligations[] obligationsArray) throws SQLException {
-        System.out.println("PROFESSORRRRRR");
 
         conn = DriverManager.getConnection("jdbc:mysql://localhost/javaproject", "root", "");
         stm = conn.createStatement();
@@ -393,7 +372,6 @@ public class LogInFrame extends javax.swing.JFrame {
         rst = stm.executeQuery(sql);
         if (rst.next()) {
             imageData = rst.getBytes("PICTURE");
-            System.out.println(imageData);
 
         }
 

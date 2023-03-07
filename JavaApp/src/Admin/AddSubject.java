@@ -17,7 +17,6 @@ import static JavaApp.LogInFrame.counterSubjects;
 import static JavaApp.LogInFrame.finalGrade;
 import static JavaApp.LogInFrame.finalGradeCounter;
 import static JavaApp.LogInFrame.professorAdmin;
-import static JavaApp.LogInFrame.professorSubjectType;
 import java.awt.Color;
 
 /**
@@ -498,13 +497,6 @@ public class AddSubject extends javax.swing.JFrame {
             jLabel15.setText(" ");
             ectsGood = true;
         }
-        System.out.println(obligationsGood == true /*&& semesterGood == true && yearGood == true && idGood == true && nameGood == true && professorGood == true && ectsGood == true*/);
-        System.out.println(/*obligationsGood == true && */semesterGood == true /*&& yearGood == true && idGood == true && nameGood == true && professorGood == true && ectsGood == true*/);
-        System.out.println(/*obligationsGood == true && semesterGood == true && */yearGood == true /*&& idGood == true && nameGood == true && professorGood == true && ectsGood == true*/);
-        System.out.println(/*obligationsGood == true && semesterGood == true && yearGood == true && */idGood == true /*&& nameGood == true && professorGood == true && ectsGood == true*/);
-        System.out.println(/*obligationsGood == true && semesterGood == true && yearGood == true && idGood == true && */nameGood == true /*&& professorGood == true && ectsGood == true*/);
-        System.out.println(/*obligationsGood == true && semesterGood == true && yearGood == true && idGood == true && nameGood == true && */professorGood == true /*&& ectsGood == true*/);
-        System.out.println(/*obligationsGood == true && semesterGood == true && yearGood == true && idGood == true && nameGood == true && professorGood == true && */ectsGood == true);
         if (obligationsGood == true && semesterGood == true && yearGood == true && idGood == true && nameGood == true && professorGood == true && ectsGood == true) {
 
             String[] professor = SubjectProfessorText.getSelectedItem().toString().split(" - ");
@@ -528,7 +520,6 @@ public class AddSubject extends javax.swing.JFrame {
             }
 
             for (int i = 0; i < counterStudent; i++) {
-                System.out.println(Student[i].getStudy_year() + " - " + Integer.parseInt(SubjectYearText.getText()));
                 if (Student[i].getStudy_year().equals(SubjectYearText.getText())) {
                     finalGrade[finalGradeCounter] = SubjectIDText.getText();
                     finalGradeCounter++;
@@ -537,7 +528,6 @@ public class AddSubject extends javax.swing.JFrame {
                     finalGrade[finalGradeCounter] = "0";
                     finalGradeCounter++;
 
-                    System.out.println(finalGrade[finalGradeCounter - 3] + " + " + finalGrade[finalGradeCounter - 2] + " + " + finalGrade[finalGradeCounter - 1]);
                 }
             }
 

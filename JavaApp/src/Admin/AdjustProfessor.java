@@ -6,9 +6,7 @@
 package Admin;
 
 import static Admin.AdminFrame.WriteProfessor;
-import static JavaApp.LogInFrame.arrayObligations;
 import static JavaApp.LogInFrame.arraySubjects;
-import static JavaApp.LogInFrame.counterObligations;
 import static JavaApp.LogInFrame.counterProfessorAdmin;
 import static JavaApp.LogInFrame.counterSubjects;
 import static JavaApp.LogInFrame.professorAdmin;

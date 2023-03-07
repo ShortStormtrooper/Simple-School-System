@@ -20,7 +20,6 @@ import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.Files;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
@@ -337,7 +336,6 @@ public class AddStudent extends javax.swing.JFrame {
         }
         if(!year.equals("1") && !year.equals("2") && !year.equals("3")){
             found = true;
-            System.out.println(year);
             errTextYear.setText("Year must be 1, 2 or 3!");
         }
         
